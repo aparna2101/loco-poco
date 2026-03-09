@@ -1,0 +1,184 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 285 38% 13%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 285 38% 13%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 285 38% 13%;
+
+    --primary: 285 38% 13%;
+    --primary-foreground: 37 75% 85%;
+
+    --secondary: 37 75% 85%;
+    --secondary-foreground: 285 38% 13%;
+
+    --muted: 38 38% 89%;
+    --muted-foreground: 285 20% 40%;
+
+    --accent: 43 72% 45%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 38 30% 82%;
+    --input: 38 30% 82%;
+    --ring: 43 72% 45%;
+
+    --radius: 0.5rem;
+
+    --sand: 37 75% 85%;
+    --soft-beige: 38 38% 89%;
+    --lavender: 0 11% 84%;
+    --gold: 43 72% 45%;
+    --purple: 285 38% 13%;
+    --deep-purple: 285 45% 8%;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 285 38% 13%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 38 38% 89%;
+    --sidebar-accent-foreground: 285 38% 13%;
+    --sidebar-border: 38 30% 82%;
+    --sidebar-ring: 43 72% 45%;
+  }
+
+  .dark {
+    --background: 285 38% 8%;
+    --foreground: 37 75% 85%;
+    --card: 285 30% 12%;
+    --card-foreground: 37 75% 85%;
+    --popover: 285 30% 12%;
+    --popover-foreground: 37 75% 85%;
+    --primary: 43 72% 45%;
+    --primary-foreground: 285 38% 13%;
+    --secondary: 285 25% 20%;
+    --secondary-foreground: 37 75% 85%;
+    --muted: 285 20% 18%;
+    --muted-foreground: 38 20% 65%;
+    --accent: 43 72% 45%;
+    --accent-foreground: 285 38% 13%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 285 20% 22%;
+    --input: 285 20% 22%;
+    --ring: 43 72% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+}
+
+@layer components {
+  .section-padding {
+    @apply py-24 md:py-32;
+  }
+
+  .gold-gradient {
+    background: linear-gradient(135deg, hsl(43 72% 45%), hsl(43 72% 55%), hsl(40 80% 65%), hsl(43 72% 45%));
+    background-size: 200% 200%;
+    animation: shimmer 3s ease-in-out infinite;
+  }
+
+  .gold-text {
+    background: linear-gradient(135deg, hsl(43 72% 50%), hsl(40 80% 65%), hsl(43 72% 45%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .glass-card {
+    @apply bg-white/80 backdrop-blur-xl border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.08)];
+  }
+
+  .premium-card {
+    @apply bg-background border border-border/50 shadow-[0_4px_20px_rgba(41,20,46,0.06)] hover:shadow-[0_12px_40px_rgba(41,20,46,0.12)] transition-all duration-500;
+  }
+
+  .premium-shadow {
+    box-shadow: 0 20px 60px -15px rgba(41, 20, 46, 0.15), 0 0 0 1px rgba(198, 151, 33, 0.05);
+  }
+
+  .divider-gold {
+    @apply w-16 h-[2px] mx-auto;
+    background: linear-gradient(90deg, transparent, hsl(43 72% 45%), transparent);
+  }
+
+  .overlay-dark {
+    background: linear-gradient(180deg, rgba(41,20,46,0.7) 0%, rgba(41,20,46,0.85) 50%, rgba(41,20,46,0.95) 100%);
+  }
+
+  .overlay-hero {
+    background: linear-gradient(135deg, rgba(41,20,46,0.85) 0%, rgba(41,20,46,0.4) 50%, rgba(41,20,46,0.2) 100%);
+  }
+
+  .text-shadow {
+    text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+  }
+}
+
+@layer utilities {
+  .hover-lift {
+    @apply transition-all duration-500;
+  }
+  .hover-lift:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px -15px rgba(41, 20, 46, 0.2);
+  }
+}
+
+@keyframes shimmer {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes reveal {
+  from { clip-path: inset(0 100% 0 0); }
+  to { clip-path: inset(0 0 0 0); }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: hsl(38 38% 89%);
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(43 72% 45%);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(43 72% 40%);
+}
